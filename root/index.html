@@ -1,70 +1,96 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8" />
-  <title>แผนที่ลานจอดรถ (2 ช่อง)</title>
+  <meta charset="UTF-8">
+  <title>ลานจอดรถ 2 ช่องในอาคาร</title>
   <style>
+    /* พื้นฐานเหมือนเดิม */
     body {
-      font-family: sans-serif;
       margin: 0;
-      padding: 20px;
-      background: #fafafa;
+      padding: 0;
+      background: #000;
+      font-family: sans-serif;
+    }
+    .building {
+      width: 600px;
+      height: 300px;
+      margin: 40px auto;
+      border: 10px solid #fff;
+      background: #000;
+      display: flex;
+    }
+    .parking-slot {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      border-right: 5px solid #fff;
+    }
+    .parking-slot:last-child {
+      border-right: none;
+    }
+    .status-circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(0,0,0,0.5);
+    }
+    .occupied {
+      background: red;
+    }
+    .vacant {
+      background: green;
     }
     h1 {
       text-align: center;
-    }
-
-    /* กรอบลานจอดรถ */
-    .parking-lot {
-      display: flex;         /* จัดให้อยู่ในแนวข้างกัน */
-      justify-content: space-around;
-      align-items: center;
-      width: 600px;          /* ปรับขนาดได้ตามต้องการ */
-      margin: 40px auto;     /* จัดกึ่งกลางหน้าจอ */
-      padding: 20px;
-      background: #ffffff;   /* สีพื้นหลังลานจอด */
-      border: 2px solid #444; /* เส้นขอบนอก */
-      border-radius: 8px;    /* มุมโค้งเล็กน้อย */
-    }
-
-    /* ช่องจอดรถแต่ละช่อง */
-    .parking-spot {
-      flex: 1;                          /* ให้กว้างเต็มพื้นที่แบบเท่า ๆ กัน */
-      margin: 10px;
-      min-height: 200px;                /* ความสูงช่องจอด */
-      background: #dcdcdc;              /* สีพื้นหลังช่องจอด */
-      border: 2px dashed #999;         /* เส้นประขอบช่องจอด */
-      border-radius: 6px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.2em;
-      font-weight: bold;
-      color: #333;
-      position: relative;
-    }
-
-    /* ตกแต่งข้อความภายในช่อง */
-    .parking-spot span {
-      margin-bottom: 10px;
+      color: #fff;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <h1>แผนที่ลานจอดรถ (2 ช่อง)</h1>
-  
-  <div class="parking-lot">
-    <!-- ช่องจอดรถช่องที่ 1 -->
-    <div class="parking-spot">
-      <span>ช่องจอดที่ 1</span>
-    </div>
 
-    <!-- ช่องจอดรถช่องที่ 2 -->
-    <div class="parking-spot">
-      <span>ช่องจอดที่ 2</span>
+  <h1>ลานจอดรถในอาคาร (2 ช่อง)</h1>
+
+  <div class="building">
+    <!-- ช่องจอดรถช่องที่ 1 (เริ่มด้วยสีแดง) -->
+    <div class="parking-slot">
+      <div class="status-circle occupied"></div>
+    </div>
+    <!-- ช่องจอดรถช่องที่ 2 (เริ่มด้วยสีเขียว) -->
+    <div class="parking-slot">
+      <div class="status-circle vacant"></div>
     </div>
   </div>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // วิธีที่ 1: ประกาศตัวแปรแยกสองวงกลม แล้วใส่ event ให้แต่ละวง
+      const circle1 = document.querySelector('.parking-slot:nth-child(1) .status-circle');
+      const circle2 = document.querySelector('.parking-slot:nth-child(2) .status-circle');
+
+      circle1.addEventListener('click', () => {
+        circle1.classList.toggle('occupied');
+        circle1.classList.toggle('vacant');
+      });
+
+      circle2.addEventListener('click', () => {
+        circle2.classList.toggle('occupied');
+        circle2.classList.toggle('vacant');
+      });
+      
+      /*
+      // หรือวิธีที่ 2: เลือกวงกลมทั้งหมด แล้ววนลูปใส่ event ให้ทีเดียว
+      const circles = document.querySelectorAll('.status-circle');
+      circles.forEach(circle => {
+        circle.addEventListener('click', () => {
+          circle.classList.toggle('occupied');
+          circle.classList.toggle('vacant');
+        });
+      });
+      */
+    });
+  </script>
 </body>
 </html>
