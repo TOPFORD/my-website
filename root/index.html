@@ -1,22 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <title>My Demo Website</title>
+  <title>แผนที่ลานจอดรถ (2 ช่อง)</title>
   <style>
     body {
       font-family: sans-serif;
-      padding: 50px;
       margin: 0;
-      background: #f5f5f5;
+      padding: 20px;
+      background: #fafafa;
     }
     h1 {
+      text-align: center;
+    }
+
+    /* กรอบลานจอดรถ */
+    .parking-lot {
+      display: flex;         /* จัดให้อยู่ในแนวข้างกัน */
+      justify-content: space-around;
+      align-items: center;
+      width: 600px;          /* ปรับขนาดได้ตามต้องการ */
+      margin: 40px auto;     /* จัดกึ่งกลางหน้าจอ */
+      padding: 20px;
+      background: #ffffff;   /* สีพื้นหลังลานจอด */
+      border: 2px solid #444; /* เส้นขอบนอก */
+      border-radius: 8px;    /* มุมโค้งเล็กน้อย */
+    }
+
+    /* ช่องจอดรถแต่ละช่อง */
+    .parking-spot {
+      flex: 1;                          /* ให้กว้างเต็มพื้นที่แบบเท่า ๆ กัน */
+      margin: 10px;
+      min-height: 200px;                /* ความสูงช่องจอด */
+      background: #dcdcdc;              /* สีพื้นหลังช่องจอด */
+      border: 2px dashed #999;         /* เส้นประขอบช่องจอด */
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2em;
+      font-weight: bold;
       color: #333;
+      position: relative;
+    }
+
+    /* ตกแต่งข้อความภายในช่อง */
+    .parking-spot span {
+      margin-bottom: 10px;
     }
   </style>
 </head>
 <body>
-  <h1>Hello from GitHub Pages!</h1>
-  <p>This is a simple static page hosted on GitHub Pages.</p>
+  <h1>แผนที่ลานจอดรถ (2 ช่อง)</h1>
+  
+  <div class="parking-lot">
+    <!-- ช่องจอดรถช่องที่ 1 -->
+    <div class="parking-spot">
+      <span>ช่องจอดที่ 1</span>
+    </div>
+
+    <!-- ช่องจอดรถช่องที่ 2 -->
+    <div class="parking-spot">
+      <span>ช่องจอดที่ 2</span>
+    </div>
+  </div>
+
 </body>
 </html>
